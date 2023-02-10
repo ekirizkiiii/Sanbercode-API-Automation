@@ -1,5 +1,10 @@
 const request = require("supertest");
 const { expect } = require("chai");
+const { faker } = require('@faker-js/faker');
+
+const randomName = faker.name.fullName(); // Rowan Nikolaus
+const randomEmail = faker.internet.email(); // Kassandra.Haley@erich.biz
+
 
 const baseUrl = "https://kasir-api.belajarqa.com";
 let bearerToken;
@@ -19,17 +24,17 @@ describe("User - Create User", () => {
     describe("Positive Case - Send valid email", () => {
 
         before(async () => {
-            const responseCreateUserList = await request(baseUrl)
+            const responseCreateUser = await request(baseUrl)
             .post("/users")
             .set("Authorization", `Bearer ${bearerToken}`)
             .send({
-                "name": "User Baru Satu",
-                "email": "user1@new.com",
+                "name": `${randomName}`,
+                "email": `${randomEmail}`,
                 "password": "jiasda2321@"
             })
 
-            statusCode = responseCreateUserList.status;
-            body = responseCreateUserList.body;
+            statusCode = responseCreateUser.status;
+            body = responseCreateUser.body;
         })
 
         it("Response status is 201", () => {
@@ -48,17 +53,17 @@ describe("User - Create User", () => {
     describe("Negative Case - Send invalid email", () => {
 
         before(async () => {
-            const responseCreateUserList = await request(baseUrl)
+            const responseCreateUser = await request(baseUrl)
             .post("/users")
             .set("Authorization", `Bearer ${bearerToken}`)
             .send({
-                "name": "User Baru Dua",
+                "name": `${randomName}`,
                 "email": "user1new.com",
                 "password": "jiasda2321@"
             })
 
-            statusCode = responseCreateUserList.status;
-            body = responseCreateUserList.body;
+            statusCode = responseCreateUser.status;
+            body = responseCreateUser.body;
         })
 
         it("Response status is 400", () => {

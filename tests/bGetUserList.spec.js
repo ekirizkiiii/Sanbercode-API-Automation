@@ -41,7 +41,7 @@ describe("User - Get User List", () => {
             const responseGetUserList = await request(baseUrl)
             .get("/users")
             .set("Authorization", `Bearer ${bearerToken}`)
-            .query({q: "asd"})
+            .query({q: "qwe"})
 
             body = responseGetUserList.body;
         })

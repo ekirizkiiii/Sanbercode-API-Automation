@@ -10,7 +10,7 @@ How to use this code?
 
 Test result:
 
-![OnPaste 20230210-194845](https://user-images.githubusercontent.com/17744851/218096378-091f2355-0f64-4fd9-983e-60091eb39e8c.png)
+![OnPaste 20230210-195609](https://user-images.githubusercontent.com/17744851/218097747-9b8077aa-03b4-4f1b-afe6-936a15b6be8d.png)
 
 Mochawesome report:
 
